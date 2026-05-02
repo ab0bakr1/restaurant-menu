@@ -1,0 +1,58 @@
+.overlay {
+  position: fixed; inset: 0; background: rgba(44,24,16,0);
+  z-index: 200; pointer-events: none; transition: background .3s;
+}
+.overlay.show { background: rgba(44,24,16,.5); pointer-events: all; }
+
+.drawer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+  background: #fff8f0; border-radius: 22px 22px 0 0;
+  max-height: 85vh; display: flex; flex-direction: column;
+  transform: translateY(100%);
+  transition: transform .35s cubic-bezier(.34,1.1,.64,1);
+  box-shadow: 0 -6px 30px rgba(44,24,16,.18);
+  max-width: 640px; margin: 0 auto;
+}
+.drawer.open { transform: translateY(0); }
+
+.handle { width: 38px; height: 4px; border-radius: 2px;
+  background: rgba(156,112,64,.3); margin: 11px auto 0; flex-shrink: 0; }
+
+.head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px 11px; border-bottom: 1px solid rgba(210,160,90,.2); flex-shrink: 0;
+}
+.title { font-size: 18px; font-weight: 700; color: #2C1810; margin: 0; }
+.closeBtn {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: rgba(44,24,16,.07); color: #2C1810; font-size: 14px;
+  cursor: pointer; transition: background .15s;
+}
+.closeBtn:hover { background: rgba(44,24,16,.14); }
+
+.body { flex: 1; overflow-y: auto; padding: 0 18px; scrollbar-width: none; }
+.body::-webkit-scrollbar { display: none; }
+
+.empty { display: flex; flex-direction: column; align-items: center;
+  padding: 44px 0; gap: 7px; }
+.empty span { font-size: 44px; opacity: .3; }
+.empty p { font-size: 15px; font-weight: 600; color: #2C1810; margin: 0; }
+.empty small { font-size: 12px; color: #9C7040; }
+
+.footer {
+  padding: 14px 18px; border-top: 1px solid rgba(210,160,90,.2);
+  display: flex; flex-direction: column; gap: 11px; flex-shrink: 0;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom));
+}
+.totalRow { display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: #9C7040; }
+.totalVal { font-size: 21px; font-weight: 700; color: #2C1810; }
+
+.submitBtn {
+  width: 100%; padding: 14px; border-radius: 14px; border: none;
+  background: #2C1810; color: #f5deb3;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: background .2s;
+}
+.submitBtn:hover:not(:disabled) { background: #D4A055; }
+.submitBtn:disabled { opacity: .55; cursor: not-allowed; }

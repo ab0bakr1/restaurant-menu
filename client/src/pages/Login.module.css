@@ -1,0 +1,119 @@
+.page {
+  min-height: 100vh;
+  background: #2C1810;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* نقطة لغة في الزاوية */
+.langBtn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 14px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(245,222,179,.4);
+  background: transparent;
+  color: #f5deb3;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+}
+.langBtn:hover { background: rgba(245,222,179,.15); }
+
+.card {
+  background: #fff8f0;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  animation: fadeIn .4s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform:none; } }
+
+.logo {
+  font-size: 52px;
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2C1810;
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.sub {
+  font-size: 13px;
+  color: #9C7040;
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C1810;
+}
+
+.input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(210,160,90,.3);
+  background: white;
+  font-size: 14px;
+  color: #2C1810;
+  outline: none;
+  transition: border-color .15s;
+  width: 100%;
+}
+.input:focus { border-color: #D4A055; }
+
+.error {
+  background: #fce4ec;
+  color: #c62828;
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #2C1810;
+  color: #f5deb3;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+  margin-top: 4px;
+}
+.btn:hover:not(:disabled) { background: #D4A055; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.hint {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(212,160,85,.1);
+  border: 1px dashed rgba(212,160,85,.3);
+  font-size: 11px;
+  color: #9C7040;
+  text-align: center;
+  line-height: 1.9;
+  font-family: monospace;
+}

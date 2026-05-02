@@ -1,0 +1,42 @@
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,248,240,.93);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(210,160,90,.2);
+}
+.inner {
+  max-width: 640px; margin: 0 auto; padding: 11px 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 9px; }
+.logo { font-size: 26px; line-height: 1; }
+.name { font-size: 17px; font-weight: 700; color: #2C1810; margin: 0; line-height: 1.2; }
+.table { font-size: 11px; color: #9C7040; margin: 0; font-weight: 500; }
+
+.actions { display: flex; align-items: center; gap: 8px; }
+.langBtn {
+  padding: 5px 12px; border-radius: 18px;
+  border: 1.5px solid #D4A055; background: transparent;
+  color: #9C7040; font-size: 12px; font-weight: 700; cursor: pointer;
+  transition: all .15s;
+}
+.langBtn:hover { background: #D4A055; color: #fff; }
+
+.cartBtn {
+  position: relative; width: 42px; height: 42px; border-radius: 50%;
+  border: none; background: #2C1810; color: #fff;
+  font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.cartBtn:hover { background: #D4A055; }
+.badge {
+  position: absolute; top: -2px; right: -2px;
+  width: 17px; height: 17px; border-radius: 50%;
+  background: #E53935; color: #fff;
+  font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff8f0;
+  animation: pop .25s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }

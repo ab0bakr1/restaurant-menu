@@ -1,0 +1,50 @@
+.page {
+  min-height: 100vh;
+  background: #fff8f0;
+  font-family: 'Segoe UI', 'Tahoma', sans-serif;
+  padding-bottom: 90px;
+}
+
+.center {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px; background: #fff8f0;
+  color: #9C7040; font-size: 14px;
+}
+
+.spinner {
+  width: 38px; height: 38px;
+  border: 3px solid rgba(212,160,85,.2);
+  border-top-color: #D4A055;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.floatBtn {
+  position: fixed; bottom: 22px; left: 50%;
+  transform: translateX(-50%);
+  background: #2C1810; color: #f5deb3;
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 26px; border-radius: 50px; border: none;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 6px 22px rgba(44,24,16,.32);
+  transition: background .2s, transform .2s;
+  z-index: 150;
+  animation: floatUp .35s cubic-bezier(.34,1.3,.64,1);
+  white-space: nowrap;
+}
+.floatBtn:hover { background: #D4A055; transform: translateX(-50%) scale(1.03); }
+
+.floatBadge {
+  background: #E53935; color: #fff;
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(18px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

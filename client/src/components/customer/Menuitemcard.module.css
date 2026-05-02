@@ -1,0 +1,55 @@
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid #f0e6d3;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(44,24,16,.08); }
+.card.active { border-color: #D4A055; box-shadow: 0 4px 14px rgba(212,160,85,.2); }
+
+.imgBox { position: relative; width: 100%; aspect-ratio: 4/3; background: #f5ede0; overflow: hidden; }
+.img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.card:hover .img { transform: scale(1.04); }
+.imgPlaceholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+.qtyBadge {
+  position: absolute; top: 7px; right: 7px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #D4A055; color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+}
+
+.info { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.name { font-size: 14px; font-weight: 700; color: #2C1810; margin: 0; line-height: 1.3; }
+.desc { font-size: 11px; color: #9C7040; margin: 0; line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.price { font-size: 15px; font-weight: 700; color: #2C1810; }
+.currency { font-size: 10px; color: #9C7040; font-weight: 500; }
+
+.addBtn {
+  padding: 6px 14px; border-radius: 20px; border: none;
+  background: #2C1810; color: #f5deb3;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  transition: background .15s;
+}
+.addBtn:hover { background: #D4A055; }
+
+.qtyCtrl {
+  display: flex; align-items: center; gap: 4px;
+  background: #2C1810; border-radius: 20px; padding: 3px 6px;
+}
+.qtyCtrl button {
+  width: 24px; height: 24px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,.15); color: #f5deb3;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s; line-height: 1;
+}
+.qtyCtrl button:hover { background: rgba(255,255,255,.3); }
+.qtyCtrl span { color: #fff; font-size: 13px; font-weight: 700; min-width: 18px; text-align: center; }

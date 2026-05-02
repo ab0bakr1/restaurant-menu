@@ -1,0 +1,111 @@
+.wrap {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--color-background-tertiary, #f8f9fa);
+}
+
+.card {
+  background: var(--color-background-primary, #fff);
+  border: 1.5px solid #FFCDD2;
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(229,57,53,.08);
+  animation: popIn .3s cubic-bezier(.34,1.2,.64,1);
+}
+
+@keyframes popIn {
+  from { opacity:0; transform: scale(.95); }
+  to   { opacity:1; transform: scale(1); }
+}
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #C62828;
+  margin: 0 0 8px;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--color-text-secondary, #666);
+  margin: 0 0 24px;
+  line-height: 1.6;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  background: #1a1a2e;
+  color: #f5deb3;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+  font-family: inherit;
+}
+.btnPrimary:hover { background: #D4A055; }
+
+.btnSecondary {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1.5px solid #e0e0e0;
+  background: transparent;
+  color: var(--color-text-secondary, #666);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: inherit;
+}
+.btnSecondary:hover {
+  border-color: #1a1a2e;
+  color: #1a1a2e;
+}
+
+.details {
+  margin-top: 20px;
+  text-align: right;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 14px;
+}
+.details summary {
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.details pre {
+  font-size: 10px;
+  color: #C62828;
+  background: #fff5f5;
+  border-radius: 6px;
+  padding: 10px;
+  overflow-x: auto;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 4px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}

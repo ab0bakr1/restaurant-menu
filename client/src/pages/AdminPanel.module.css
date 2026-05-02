@@ -1,0 +1,31 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-background-tertiary);
+  font-family: 'Segoe UI', 'Tahoma', sans-serif;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+.langBtn {
+  position: absolute;
+  background-color: #D4A055;
+  bottom: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid #D4A055;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10;
+  transition: all .15s;
+}
+.langBtn:hover {
+  border-color: #D4A055;
+  color: var(--color-text-primary);
+}

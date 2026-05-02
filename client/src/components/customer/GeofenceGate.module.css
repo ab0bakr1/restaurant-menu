@@ -1,0 +1,84 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 24, 16, 0.6);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  animation: fadeIn .2s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.card {
+  background: #FFF8F0;
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(44,24,16,.25);
+  animation: slideUp .3s cubic-bezier(.34,1.2,.64,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+/* جاري الفحص */
+.spinner {
+  width: 48px; height: 48px;
+  border: 3px solid rgba(212,160,85,.2);
+  border-top-color: #D4A055;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+
+/* الأيقونات */
+.iconDenied { font-size: 52px; animation: bounce 1s ease infinite alternate; }
+@keyframes bounce { from{transform:translateY(0)} to{transform:translateY(-6px)} }
+.iconWarn { font-size: 48px; }
+
+/* النصوص */
+.title { font-size: 17px; font-weight: 700; color: #2C1810; margin: 0; line-height: 1.3; }
+.titleDenied { font-size: 17px; font-weight: 700; color: #C62828; margin: 0; }
+.sub { font-size: 13px; color: #9C7040; margin: 0; line-height: 1.6; }
+
+/* شارة المسافة */
+.distanceBadge {
+  background: #FFEBEE;
+  color: #C62828;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #FFCDD2;
+}
+
+/* الأزرار */
+.btns { display: flex; gap: 10px; width: 100%; margin-top: 4px; }
+
+.btnRetry {
+  flex: 1; padding: 12px;
+  border-radius: 12px; border: none;
+  background: #2C1810; color: #F5DEB3;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: background .15s;
+  font-family: inherit;
+}
+.btnRetry:hover { background: #D4A055; }
+
+.btnCancel {
+  flex: 1; padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(44,24,16,.2);
+  background: transparent; color: #9C7040;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all .15s;
+  font-family: inherit;
+}
+.btnCancel:hover { border-color: #9C7040; color: #2C1810; }

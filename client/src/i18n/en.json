@@ -1,0 +1,48 @@
+{
+  "menu": "Menu",
+  "addToCart": "Add to cart",
+  "cart": "Cart",
+  "submitOrder": "Place Order",
+  "orderConfirmed": "Order received!",
+  "total": "Total",
+  "sar": "SAR",
+  "noItems": "No items in this category",
+  "loadingMenu": "Loading menu...",
+  "table": "Table",
+  "restaurant": "Our Restaurant",
+  "viewOrder": "View Order",
+  "emptyCart": "Your cart is empty",
+  "emptyCartSub": "Add items from the menu",
+  "sending": "Sending...",
+  "orderFailed": "Failed to submit order, please try again",
+  "newOrder": "New Order",
+  "orderNum": "Order #",
+  "all": "All",
+  "status": {
+    "pending":   "Pending",
+    "confirmed": "Confirmed",
+    "ready":     "Ready for pickup",
+    "delivered": "Delivered"
+  },
+  "statusMsg": {
+    "pending":   "Order received — awaiting confirmation",
+    "confirmed": "Your order is being prepared",
+    "ready":     "Order ready — on its way!",
+    "delivered": "Enjoy your meal! Thank you!"
+  },
+  "categories": {
+    "appetizers": "Appetizers",
+    "mains":      "Main courses",
+    "drinks":     "Drinks",
+    "desserts":   "Desserts"
+  },
+  "waiter": {
+    "title": "Waiter Dashboard",
+    "noOrders": "No orders yet",
+    "table": "Table",
+    "status": "Status",
+    "confirm": "Confirm",
+    "ready": "Ready",
+    "loading": "Loading orders..."
+  }
+}

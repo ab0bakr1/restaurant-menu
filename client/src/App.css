@@ -1,0 +1,8 @@
+/* client/src/App.css */
+/* نتأكد أن لا أنماط قديمة تؤثر على المشروع */
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

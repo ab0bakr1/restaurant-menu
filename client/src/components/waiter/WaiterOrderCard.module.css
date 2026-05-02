@@ -1,0 +1,92 @@
+.card {
+  background: var(--bg, #fff);
+  border: 2px solid var(--border, #e0e0e0);
+  border-radius: 14px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  animation: fadeUp .3s ease;
+  transition: transform .15s, box-shadow .15s;
+}
+.card:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+
+.pulse { animation: fadeUp .3s ease, glow 1.5s ease infinite; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+@keyframes glow { 0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.25)} 50%{box-shadow:0 0 0 8px rgba(16,185,129,0)} }
+
+.head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.left { display:flex; align-items:center; gap:10px; }
+.icon { font-size:26px; line-height:1; }
+.tableNum { font-size:15px; color:#1a1a2e; }
+.tableNum strong { font-weight:800; font-size:17px; }
+.orderId { font-size:11px; color:#999; margin-top:1px; }
+.right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.statusBadge { font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; }
+.time { font-size:11px; color:#aaa; }
+
+.items { padding:10px 0; border-top:1px dashed rgba(0,0,0,.1); border-bottom:1px dashed rgba(0,0,0,.1); display:flex; flex-direction:column; gap:6px; list-style:none; }
+.item { display:flex; align-items:baseline; gap:7px; font-size:14px; }
+.qty  { font-weight:800; color:#1a1a2e; min-width:26px; }
+.name { color:#333; flex:1; font-weight:500; }
+.note { font-size:11px; color:#888; font-style:italic; }
+
+.actions { display:flex; gap:7px; flex-wrap:wrap; }
+
+.btn {
+  flex:1; min-width:120px; padding:10px;
+  border-radius:10px; border:none;
+  font-size:13px; font-weight:700; cursor:pointer;
+  transition:opacity .15s, transform .1s; font-family:inherit;
+}
+.btn:hover:not(:disabled) { opacity:.88; }
+.btn:active:not(:disabled) { transform:scale(.98); }
+.btn:disabled { opacity:.5; cursor:not-allowed; }
+
+.btnConfirm { background:#3B82F6; color:#fff; }
+.btnDeliver { background:#10B981; color:#fff; font-size:14px; }
+.btnReject  {
+  background:transparent; color:#E53935;
+  border:1.5px solid #FFCDD2; flex:0 0 auto;
+  padding:10px 14px;
+}
+.btnReject:hover { background:#FFEBEE; }
+
+.waiting { flex:1; padding:10px; text-align:center; background:rgba(59,130,246,.08); border-radius:10px; font-size:13px; color:#3B82F6; font-weight:600; }
+.rejectedMsg { flex:1; padding:10px; text-align:center; background:#FFEBEE; border-radius:10px; font-size:13px; color:#E53935; font-weight:600; }
+
+/* مربع سبب الرفض */
+.rejectBox {
+  background:#FFEBEE; border-radius:12px; padding:14px;
+  border:1.5px solid #FFCDD2;
+  display:flex; flex-direction:column; gap:10px;
+  animation: fadeUp .2s ease;
+}
+.rejectTitle { font-size:13px; font-weight:700; color:#C62828; margin:0; }
+.reasonsList { display:flex; flex-wrap:wrap; gap:7px; }
+.reasonBtn {
+  padding:6px 13px; border-radius:20px; font-size:12px; font-weight:600;
+  border:1.5px solid #FFCDD2; background:#fff; color:#C62828;
+  cursor:pointer; transition:all .15s; font-family:inherit;
+}
+.reasonBtn:hover { background:#FFCDD2; }
+.reasonOn { background:#E53935; color:#fff; border-color:#E53935; }
+
+.customInput {
+  padding:8px 12px; border-radius:8px;
+  border:1.5px solid #FFCDD2; background:#fff;
+  font-size:13px; color:#1a1a2e; outline:none; font-family:inherit;
+}
+.customInput:focus { border-color:#E53935; }
+
+.rejectActions { display:flex; gap:8px; }
+.rejectConfirmBtn {
+  flex:1; padding:9px; border-radius:9px; border:none;
+  background:#E53935; color:#fff;
+  font-size:13px; font-weight:700; cursor:pointer; font-family:inherit;
+  transition:opacity .15s;
+}
+.rejectConfirmBtn:hover:not(:disabled) { opacity:.88; }
+.rejectConfirmBtn:disabled { opacity:.4; cursor:not-allowed; }
+.rejectCancelBtn {
+  padding:9px 16px; border-radius:9px;
+  border:1px solid #FFCDD2; background:transparent; color:#C62828;
+  font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
+}
