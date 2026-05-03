@@ -11,9 +11,9 @@
 import { useState, useCallback } from 'react';
 
 // ── إعدادات المطعم — غيّر هذه القيم ──────────────────────
-const RESTAURANT_LAT  = 16.053198;   // خط العرض  ← ضع إحداثيات مطعمك
-const RESTAURANT_LNG  = 48.9979856;   // خط الطول  ← من Google Maps
-const MAX_DISTANCE_M  = 50;        // الحد الأقصى بالأمتار (50 متر)
+const RESTAURANT_LAT = Number(import.meta.env.VITE_RESTAURANT_LAT);
+const RESTAURANT_LNG = Number(import.meta.env.VITE_RESTAURANT_LNG);
+const MAX_DISTANCE_M = Number(import.meta.env.VITE_MAX_DISTANCE) || 50;
 
 // ── حساب المسافة بين نقطتين (Haversine Formula) ──────────
 function getDistanceMeters(lat1, lng1, lat2, lng2) {
