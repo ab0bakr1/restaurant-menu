@@ -1,396 +1,373 @@
-# 🍽 نظام القائمة الرقمية للمطعم
-# Restaurant Digital Menu System
+# 🍽 Restaurant Digital Menu System
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Node](https://img.shields.io/badge/node-%3E%3D20.0.0-green)
-![License](https://img.shields.io/badge/license-MIT-yellow)
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
+![Node](https://img.shields.io/badge/node-%3E%3D20.0.0-green?style=flat-square)
+![React](https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react)
+![SQLite](https://img.shields.io/badge/sqlite-3-blue?style=flat-square&logo=sqlite)
+![License](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)
 
-**نظام إدارة مطعم متكامل | Full Restaurant Management System**
+A complete, offline-first restaurant management system with QR ordering, real-time kitchen display, cashier invoicing, and admin dashboard — built with Node.js + React.
 
-يعمل بدون إنترنت على الشبكة المحلية (LAN) | Works offline on Local Network
+**Works on local WiFi (LAN) with no internet required.**
+
+[Features](#-features) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Order Flow](#-order-flow) • [API Reference](#-api-reference)
 
 </div>
 
 ---
 
-## 📋 جدول المحتويات | Table of Contents
+## 📸 Screenshots
 
-- [المميزات](#-المميزات)
-- [متطلبات التشغيل](#-متطلبات-التشغيل)
-- [تثبيت المشروع](#-تثبيت-المشروع)
-- [تشغيل المشروع](#-تشغيل-المشروع)
-- [تدفق الطلب](#-تدفق-الطلب)
-- [الصفحات والروابط](#-الصفحات-والروابط)
-- [الحسابات الافتراضية](#-الحسابات-الافتراضية)
-- [إعداد الوصول من الإنترنت](#-إعداد-الوصول-من-الإنترنت)
-- [النسخ الاحتياطي](#-النسخ-الاحتياطي)
-- [هيكل المشروع](#-هيكل-المشروع)
+| Customer Menu (QR) | Waiter Dashboard | Kitchen Display |
+|---|---|---|
+| Customer scans QR → browses menu → places order | Waiter confirms & tracks orders | Kitchen sees orders in real-time |
+
+| Admin Panel | Cashier & Invoice | Sales Reports |
+|---|---|---|
+| Manage menu, staff & QR codes | Print invoices & record payments | Daily/weekly/monthly sales |
 
 ---
 
-## ✨ المميزات
+## ✨ Features
 
-### الباك-اند
-- ✅ يعمل بدون إنترنت على LAN المحلي
-- ✅ قاعدة بيانات SQLite محلية
-- ✅ تحديثات لحظية عبر Socket.IO
-- ✅ JWT للمصادقة وحماية المسارات
-- ✅ دعم طابعة المطبخ WiFi (ESC/POS)
-- ✅ نسخ احتياطي تلقائي يومي
+### Backend
+- ✅ **Offline-first** — runs entirely on local LAN, no internet needed
+- ✅ **Real-time updates** via Socket.IO across all devices
+- ✅ **JWT authentication** with role-based access control
+- ✅ **WiFi kitchen printer** support (ESC/POS protocol)
+- ✅ **Automatic daily backups** via PM2 cron
+- ✅ **Cloudflare Tunnel** support for internet access
 
-### الفرونت-اند
-- ✅ QR Code لكل طاولة
-- ✅ تدفق طلب كامل: عميل ← نادل ← مطبخ ← كاشير
-- ✅ دعم العربية والإنجليزية مع RTL
-- ✅ تحقق جغرافي (العميل داخل المطعم)
-- ✅ شاشة مطبخ مع عداد وقت
-- ✅ تقارير مبيعات للإدمن
-
----
-
-## 💻 متطلبات التشغيل
-
-| المتطلب | الإصدار |
-|---------|---------|
-| Node.js | v20.0.0 أو أحدث |
-| npm | v9.0.0 أو أحدث |
-| نظام التشغيل | Windows 10/11 أو macOS أو Linux |
-| RAM | 2GB كحد أدنى |
-| المساحة | 500MB |
+### Frontend
+- ✅ **QR Code per table** — customers scan to order
+- ✅ **Full order lifecycle**: Customer → Waiter → Kitchen → Cashier
+- ✅ **Arabic & English** with automatic RTL support
+- ✅ **Geofence check** — prevents orders from outside the restaurant
+- ✅ **Kitchen display** with live timer and urgency alerts
+- ✅ **Error boundaries** — graceful error handling on all pages
+- ✅ **Connection status** indicator for server disconnects
 
 ---
 
-## 📦 تثبيت المشروع
+## 🛠 Tech Stack
 
-### الخطوة 1 — تحميل المشروع
+| Layer | Technology |
+|-------|-----------|
+| Backend | Node.js, Express.js |
+| Database | SQLite (better-sqlite3) |
+| Real-time | Socket.IO |
+| Authentication | JWT + bcryptjs |
+| Frontend | React 19, Vite |
+| Styling | CSS Modules |
+| Internationalization | i18next |
+| Printer | @node-escpos |
+| Tunnel | Cloudflare Tunnel |
+| Process Manager | PM2 |
+
+---
+
+## 📋 Requirements
+
+| Requirement | Version |
+|------------|---------|
+| Node.js | v20.0.0 or higher |
+| npm | v9.0.0 or higher |
+| OS | Windows 10/11, macOS, or Linux |
+| RAM | 2GB minimum |
+| Storage | 500MB |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/restaurant-menu.git
 cd restaurant-menu
 ```
 
-### الخطوة 2 — تثبيت مكتبات السيرفر
+### 2. Install server dependencies
 
 ```bash
 cd server
 npm install
 ```
 
-### الخطوة 3 — إعداد ملف البيئة للسيرفر
+### 3. Configure server environment
 
 ```bash
-# انسخ ملف المثال
-copy .env.example .env    # Windows
-cp .env.example .env      # macOS/Linux
+# Copy the example file
+cp .env.example .env        # macOS/Linux
+copy .env.example .env      # Windows
 ```
 
-عدّل `server/.env`:
+Edit `server/.env`:
 
 ```env
 PORT=5001
-JWT_SECRET=ضع-هنا-مفتاح-عشوائي-طويل
+JWT_SECRET=your-random-secret-here
 CLIENT_URL=http://localhost:5173
 PRINTER_ENABLED=false
 PRINTER_IP=192.168.1.50
 PRINTER_PORT=9100
-MAX_BACKUPS=30
 ```
 
-> ⚠️ لتوليد JWT_SECRET آمن:
+> Generate a secure JWT secret:
 > ```bash
 > node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 > ```
 
-### الخطوة 4 — تثبيت مكتبات الفرونت
+### 4. Install frontend dependencies
 
 ```bash
 cd ../client
 npm install
 ```
 
-### الخطوة 5 — إعداد ملف البيئة للفرونت
+### 5. Configure frontend environment
 
 ```bash
-copy .env.example .env    # Windows
-cp .env.example .env      # macOS/Linux
+cp .env.example .env
 ```
 
-عدّل `client/.env`:
+Edit `client/.env`:
 
 ```env
-# في وضع التطوير
 VITE_SERVER_URL=http://localhost:5001
-
-# في وضع الإنتاج على شبكة المطعم
-# VITE_SERVER_URL=http://192.168.1.100:5001
-
-# مع Cloudflare Tunnel
-# VITE_SERVER_URL=https://your-tunnel.trycloudflare.com
+VITE_RESTAURANT_LAT=0
+VITE_RESTAURANT_LNG=0
+VITE_MAX_DISTANCE=50
 ```
 
-### الخطوة 6 — إنشاء قاعدة البيانات والحسابات الافتراضية
+> Set your restaurant's real GPS coordinates from Google Maps.
+
+### 6. Seed the database
 
 ```bash
 cd ../server
 node db/seed.js
 ```
 
----
+### 7. Run in development mode
 
-## 🚀 تشغيل المشروع
+Open **two terminals**:
 
-### وضع التطوير (Development)
-
-افتح **طرفيتين منفصلتين**:
-
-**الطرفية 1 — السيرفر:**
+**Terminal 1 — Server:**
 ```bash
 cd server
 node index.js
 ```
 
-**الطرفية 2 — الفرونت:**
+**Terminal 2 — Frontend:**
 ```bash
 cd client
 npm run dev
 ```
 
-### وضع الإنتاج (Production) — داخل المطعم
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-**الخطوة 1 — عدّل `client/.env` بـ IP السيرفر:**
+---
+
+## 🏭 Production Deployment
+
+### LAN-only (no internet access needed)
+
+**Step 1** — Set server IP in `client/.env`:
 ```env
 VITE_SERVER_URL=http://192.168.1.100:5001
 ```
 
-**الخطوة 2 — ابنِ الفرونت:**
+**Step 2** — Build the frontend:
 ```bash
 cd client
 npm run build
 ```
 
-**الخطوة 3 — شغّل بـ PM2:**
+**Step 3** — Run with PM2:
 ```bash
-# تثبيت PM2 (مرة واحدة فقط)
 npm install -g pm2
-
-# تشغيل المشروع
 cd ..
 pm2 start ecosystem.config.js
-
-# حفظ الإعدادات للتشغيل التلقائي
 pm2 save
 pm2 startup
 ```
 
-**الخطوة 4 — تحقق من التشغيل:**
-```bash
-pm2 status
-```
+### Internet access via Cloudflare Tunnel (free)
 
-### وضع الإنتاج مع Cloudflare Tunnel (وصول من الإنترنت)
-
-**الخطوة 1 — شغّل الـ Tunnel في طرفية منفصلة:**
+**Temporary tunnel** (URL changes on restart):
 ```bash
 cloudflared tunnel --url http://localhost:5001
+# Copy the URL shown, e.g.: https://abc-xyz.trycloudflare.com
 ```
 
-**الخطوة 2 — انسخ الرابط الذي يظهر:**
-```
-https://something-random.trycloudflare.com
-```
-
-**الخطوة 3 — عدّل `client/.env`:**
-```env
-VITE_SERVER_URL=https://something-random.trycloudflare.com
-```
-
-**الخطوة 4 — أعِد البناء:**
+**Permanent tunnel** (requires free Cloudflare account + domain):
 ```bash
+cloudflared login
+cloudflared tunnel create restaurant-menu
+cloudflared tunnel run restaurant-menu
+```
+
+After getting your tunnel URL, update `client/.env` and rebuild:
+```bash
+# client/.env
+VITE_SERVER_URL=https://your-tunnel-url.trycloudflare.com
+
 cd client && npm run build
 ```
 
 ---
 
-## 🔄 تدفق الطلب الكامل
+## 🔄 Order Flow
 
 ```
-1. العميل يمسح QR على الطاولة
-         ↓
-2. يفتح القائمة ويضيف أصنافاً للسلة
-         ↓
-3. يضغط "إرسال الطلب" ← تحقق جغرافي
-         ↓
-4. [النادل] يرى الطلب الجديد ← يضغط "تأكيد"
-         ↓
-5. [المطبخ] يرى الطلب ← يحضّره ← يضغط "جاهز"
-         ↓
-6. [النادل] يرى "جاهز" ← يستلم من المطبخ ← يضغط "تسليم"
-         ↓
-7. [الكاشير] يرى الطلب ← يطبع الفاتورة ← يسجّل الدفع
-         ↓
-8. الطلب مكتمل ✅
+Customer scans QR on table
+        ↓
+Browses menu → adds items → submits order
+(geofence check: must be inside restaurant)
+        ↓
+[WAITER] sees new order → clicks "Confirm"
+        ↓
+[KITCHEN] receives order → prepares it → clicks "Ready"
+Kitchen printer prints ticket automatically
+        ↓
+[WAITER] sees "Ready" → collects from kitchen → clicks "Deliver"
+        ↓
+[CASHIER] sees order → prints invoice → records payment
+        ↓
+Order complete ✅
 ```
+
+### Order Statuses
+
+| Status | Description |
+|--------|-------------|
+| `pending` | Customer submitted, waiter not confirmed |
+| `confirmed` | Waiter confirmed, kitchen preparing |
+| `ready` | Kitchen done, waiter collecting |
+| `delivered` | Waiter delivered, cashier processing payment |
+| `paid` | Payment completed ✅ |
+| `rejected` | Waiter rejected the order ❌ |
 
 ---
 
-## 🖥 الصفحات والروابط
+## 🖥 Pages & Routes
 
-| الصفحة | الرابط | من يستخدمها | يحتاج دخول؟ |
-|--------|--------|-------------|-------------|
-| تسجيل الدخول | `/login` | الجميع | ❌ |
-| قائمة العميل | `/table/1` | العميل | ❌ |
-| شاشة المطبخ | `/kitchen` | الطباخون | ❌ |
-| النادل | `/waiter` | النادل | ✅ |
-| الكاشير | `/cashier` | الكاشير | ✅ |
-| الإدارة | `/admin` | المدير | ✅ admin |
-| التقارير | `/reports` | المدير | ✅ admin |
-
----
-
-## 👤 الحسابات الافتراضية
-
-> ⚠️ **مهم:** غيّر كلمات المرور فور أول تشغيل
-
-| الدور | اسم المستخدم | كلمة المرور |
-|-------|-------------|-------------|
-| مدير | `admin` | `admin123` |
-| نادل | `waiter1` | `waiter123` |
-| كاشير | `cashier` | `cashier123` |
-
-**لتغيير كلمة المرور:**
-```
-/admin → تبويب الموظفون → احذف الحساب وأنشئ واحداً جديداً
-```
+| Page | Route | Who Uses It | Auth Required |
+|------|-------|-------------|---------------|
+| Login | `/login` | Everyone | ❌ |
+| Customer Menu | `/table/:number` | Customers | ❌ |
+| Kitchen Display | `/kitchen` | Kitchen staff | ❌ |
+| Waiter Dashboard | `/waiter` | Waiters | ✅ waiter |
+| Cashier | `/cashier` | Cashiers | ✅ cashier |
+| Admin Panel | `/admin` | Manager | ✅ admin |
+| Sales Reports | `/reports` | Manager | ✅ admin |
 
 ---
 
-## 🌐 إعداد الوصول من الإنترنت
+## 👤 Default Accounts
 
-### الخيار 1 — Quick Tunnel (مجاني، مؤقت)
+> ⚠️ **Change all passwords immediately after first login**
 
-```bash
-cloudflared tunnel --url http://localhost:5001
-```
+| Role | Username | Password |
+|------|----------|----------|
+| Admin | `admin` | `admin123` |
+| Waiter | `waiter1` | `waiter123` |
+| Cashier | `cashier` | `cashier123` |
 
-الرابط يتغير عند كل إعادة تشغيل.
-
-### الخيار 2 — LAN فقط (بدون إنترنت)
-
-```env
-# client/.env
-VITE_SERVER_URL=http://192.168.1.100:5001
-```
-
-العميل يجب أن يكون على WiFi المطعم.
-
-### الخيار 3 — Named Tunnel مع دومين (دائم ✅)
-
-```bash
-# 1. سجّل دخول
-cloudflared login
-
-# 2. أنشئ tunnel
-cloudflared tunnel create restaurant-menu
-
-# 3. أنشئ config.yml في ~/.cloudflared/
-# tunnel: restaurant-menu
-# credentials-file: ~/.cloudflared/[UUID].json
-# ingress:
-#   - hostname: menu.yourdomain.com
-#     service: http://localhost:5001
-#   - service: http_status:404
-
-# 4. شغّل
-cloudflared tunnel run restaurant-menu
-
-# 5. للتشغيل التلقائي مع Windows
-cloudflared service install
-```
+Change passwords from: `/admin` → Staff tab → delete & recreate account.
 
 ---
 
-## 💾 النسخ الاحتياطي
+## 📱 QR Code Generation
 
-```bash
-# نسخة يدوية الآن
-npm run backup
+Generate and print QR codes for all tables from the browser:
 
-# عرض النسخ المتاحة
-npm run restore
-
-# استعادة أحدث نسخة
-npm run restore:latest
 ```
-
-النسخ التلقائية تعمل كل يوم الساعة **3:00 صباحاً** عبر PM2.
-
-تُحفظ في: `server/backups/`
-
----
-
-## 🖨 إعداد طابعة المطبخ
-
-```env
-# server/.env
-PRINTER_ENABLED=true        # فعّل الطابعة
-PRINTER_IP=192.168.1.50     # IP الطابعة على الشبكة
-PRINTER_PORT=9100           # المنفذ الافتراضي ESC/POS
-```
-
-> الطابعة يجب أن تكون على نفس الشبكة المحلية وتدعم ESC/POS عبر WiFi.
-
----
-
-## 📱 توليد QR Code للطاولات
-
-```bash
-# افتح في المتصفح (السيرفر يجب أن يعمل)
 http://localhost:5001/api/qr/print/all?tables=10
 ```
 
-سيفتح صفحة بـ QR كل الطاولات جاهزة للطباعة.
+Or single table:
+```
+http://localhost:5001/api/qr/5
+```
 
 ---
 
-## 📁 هيكل المشروع
+## 🖨 Kitchen Printer Setup
+
+Set in `server/.env`:
+
+```env
+PRINTER_ENABLED=true
+PRINTER_IP=192.168.1.50      # Your printer's static IP
+PRINTER_PORT=9100             # Default ESC/POS port
+```
+
+Supported: Any thermal printer with ESC/POS over WiFi (Epson TM-T82, XPRINTER, RONGTA, etc.)
+
+> Assign a **static IP** to your printer in router settings so it never changes.
+
+---
+
+## 💾 Backup & Restore
+
+```bash
+# Manual backup now
+npm run backup
+
+# List available backups
+npm run restore
+
+# Restore latest backup
+npm run restore:latest
+
+# Restore specific backup
+node server/restore.js restaurant_2024-01-15_03-00.db
+```
+
+Automatic backups run daily at **3:00 AM** via PM2.
+Stored in: `server/backups/` — keeps last 30 backups.
+
+---
+
+## 📁 Project Structure
 
 ```
 restaurant-menu/
-├── server/                     # الباك-اند
-│   ├── index.js                # نقطة البداية
-│   ├── .env                    # إعدادات السيرفر (لا ترفعه لـ Git)
-│   ├── .env.example            # مثال الإعدادات
-│   ├── backup.js               # سكريبت النسخ الاحتياطي
-│   ├── restore.js              # سكريبت الاستعادة
+├── server/                     # Backend
+│   ├── index.js                # Entry point
+│   ├── .env                    # Environment config (not in Git)
+│   ├── .env.example            # Config template
+│   ├── backup.js               # Backup script
+│   ├── restore.js              # Restore script
 │   ├── db/
-│   │   ├── schema.sql          # تعريف جداول قاعدة البيانات
-│   │   ├── db.js               # الاتصال بقاعدة البيانات
-│   │   ├── seed.js             # إنشاء البيانات الافتراضية
-│   │   └── restaurant.db       # قاعدة البيانات (لا ترفعها لـ Git)
+│   │   ├── schema.sql          # Database schema
+│   │   ├── db.js               # Database connection
+│   │   └── seed.js             # Default data seeder
 │   ├── routes/
-│   │   ├── menu.js             # API القائمة
-│   │   ├── orders.js           # API الطلبات
-│   │   ├── auth.js             # تسجيل الدخول والحسابات
-│   │   ├── print.js            # الطباعة والفواتير
-│   │   ├── reports.js          # تقارير المبيعات
-│   │   ├── payments.js         # سجل المدفوعات
-│   │   └── qr.js               # توليد QR Code
+│   │   ├── menu.js             # Menu CRUD API
+│   │   ├── orders.js           # Orders API
+│   │   ├── auth.js             # Auth & user management
+│   │   ├── print.js            # Printing & invoices
+│   │   ├── reports.js          # Sales reports
+│   │   ├── payments.js         # Payment history
+│   │   └── qr.js               # QR code generation
 │   ├── services/
-│   │   └── printer.js          # خدمة طابعة المطبخ
-│   ├── middleware/
-│   │   └── authMiddleware.js   # حماية المسارات بـ JWT
-│   └── backups/                # النسخ الاحتياطية (لا ترفعها لـ Git)
+│   │   └── printer.js          # Kitchen printer service
+│   └── middleware/
+│       └── authMiddleware.js   # JWT protection middleware
 │
-├── client/                     # الفرونت-اند
-│   ├── .env                    # إعدادات الفرونت (لا ترفعه لـ Git)
-│   ├── .env.example            # مثال الإعدادات
-│   ├── vite.config.js          # إعدادات Vite
+├── client/                     # Frontend
+│   ├── .env                    # Environment config (not in Git)
+│   ├── .env.example            # Config template
+│   ├── vite.config.js          # Vite configuration
 │   └── src/
-│       ├── App.jsx             # المسارات الرئيسية
-│       ├── main.jsx            # نقطة البداية
-│       ├── index.css           # الأنماط العامة
+│       ├── App.jsx             # Routes
+│       ├── main.jsx            # Entry point
+│       ├── index.css           # Global styles (Cairo font)
 │       ├── pages/
 │       │   ├── Login.jsx
 │       │   ├── CustomerMenu.jsx
@@ -400,129 +377,141 @@ restaurant-menu/
 │       │   ├── KitchenDisplay.jsx
 │       │   └── SalesReports.jsx
 │       ├── components/
-│       │   ├── customer/       # مكونات قائمة العميل
-│       │   ├── waiter/         # مكونات النادل
-│       │   ├── kitchen/        # مكونات المطبخ
-│       │   ├── cashier/        # مكونات الكاشير
-│       │   ├── admin/          # مكونات الإدارة
+│       │   ├── customer/       # QR menu components
+│       │   ├── waiter/         # Waiter components
+│       │   ├── kitchen/        # Kitchen display components
+│       │   ├── cashier/        # Cashier components
+│       │   ├── admin/          # Admin panel components
 │       │   ├── ErrorBoundary.jsx
 │       │   ├── ProtectedRoute.jsx
 │       │   └── ConnectionStatus.jsx
 │       ├── services/
-│       │   ├── api.js          # Axios مع token تلقائي
-│       │   ├── socket.js       # Socket.IO مشترك
-│       │   └── authService.js  # إدارة الجلسة
+│       │   ├── api.js          # Axios with auto token
+│       │   ├── socket.js       # Shared Socket.IO instance
+│       │   └── authService.js  # Session management
 │       ├── hooks/
-│       │   ├── useSound.js     # صوت التنبيه
-│       │   └── useGeofence.js  # التحقق الجغرافي
+│       │   ├── useSound.js     # Notification sound
+│       │   └── useGeofence.js  # Geofence validation
 │       └── i18n/
-│           ├── i18n.js         # إعداد اللغات
-│           ├── ar.json         # النصوص العربية
-│           └── en.json         # النصوص الإنجليزية
+│           ├── i18n.js         # i18n setup
+│           ├── ar.json         # Arabic translations
+│           └── en.json         # English translations
 │
-├── ecosystem.config.js         # إعدادات PM2
-├── .gitignore                  # ملفات مستثناة من Git
-└── README.md                   # هذا الملف
+├── ecosystem.config.js         # PM2 configuration
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-## 🔧 أوامر مفيدة
+## 🔌 API Reference
+
+### Menu
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/menu` | Get all active items | Public |
+| POST | `/api/menu` | Add menu item | Admin |
+| PATCH | `/api/menu/:id` | Update item / toggle active | Admin |
+| DELETE | `/api/menu/:id` | Delete item | Admin |
+
+### Orders
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/orders` | Create new order | Public |
+| GET | `/api/orders?view=waiter` | Get waiter orders | Staff |
+| GET | `/api/orders?view=kitchen` | Get kitchen orders | Staff |
+| GET | `/api/orders?view=cashier` | Get cashier orders | Staff |
+| PATCH | `/api/orders/:id/status` | Update order status | Staff |
+
+### Auth
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/auth/login` | Login | Public |
+| POST | `/api/auth/register` | Create account | Admin |
+| GET | `/api/auth/users` | List staff | Admin |
+| DELETE | `/api/auth/users/:id` | Delete account | Admin |
+
+### Reports & Payments
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/reports?from=&to=` | Sales report | Admin |
+| GET | `/api/payments?from=&to=` | Payment history | Admin |
+| POST | `/api/print/invoice` | Record payment | Staff |
+
+### QR Codes
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/qr/:table` | Get table QR as PNG | Public |
+| GET | `/api/qr/print/all?tables=10` | Print all QR codes | Public |
+
+---
+
+## 🔒 Security
+
+- JWT tokens expire after **24 hours**
+- Passwords hashed with **bcrypt** (salt rounds: 10)
+- Sensitive routes protected by **role-based middleware**
+- Geofence check prevents orders from outside the restaurant
+- All secrets stored in `.env` files (excluded from Git)
+
+**Before going to production:**
+- [ ] Change `JWT_SECRET` to a random 32-byte hex string
+- [ ] Change all default passwords
+- [ ] Set `PRINTER_ENABLED=true` if using a printer
+- [ ] Set correct restaurant GPS coordinates
+
+---
+
+## 🛠 Useful Commands
 
 ```bash
-# تشغيل السيرفر
-cd server && node index.js
+# Development
+node server/index.js          # Start server
+cd client && npm run dev      # Start frontend
 
-# تشغيل الفرونت للتطوير
-cd client && npm run dev
+# Production
+cd client && npm run build    # Build frontend
+pm2 start ecosystem.config.js # Start with PM2
+pm2 status                    # Check status
+pm2 logs                      # View logs
+pm2 restart restaurant        # Restart server
 
-# بناء الفرونت للإنتاج
-cd client && npm run build
+# Database
+node server/db/seed.js        # Seed default data
+npm run backup                # Manual backup
+npm run restore               # Restore from backup
 
-# نسخ احتياطي يدوي
-npm run backup
-
-# استعادة من نسخة
-npm run restore
-
-# PM2 — تشغيل كامل
-pm2 start ecosystem.config.js
-
-# PM2 — مراقبة
-pm2 status
-pm2 logs
-pm2 restart restaurant
-
-# Cloudflare Tunnel مؤقت
-cloudflared tunnel --url http://localhost:5001
+# Cloudflare
+cloudflared tunnel --url http://localhost:5001  # Quick tunnel
 ```
 
 ---
 
-## 🛠 API Reference
+## 🤝 Contributing
 
-| Method | Route | الوصف | الصلاحية |
-|--------|-------|-------|----------|
-| GET | `/api/menu` | جلب القائمة | عام |
-| POST | `/api/menu` | إضافة صنف | admin |
-| PATCH | `/api/menu/:id` | تعديل صنف | admin |
-| DELETE | `/api/menu/:id` | حذف صنف | admin |
-| POST | `/api/orders` | إنشاء طلب | عام |
-| GET | `/api/orders?view=waiter` | طلبات النادل | staff |
-| GET | `/api/orders?view=kitchen` | طلبات المطبخ | staff |
-| GET | `/api/orders?view=cashier` | طلبات الكاشير | staff |
-| PATCH | `/api/orders/:id/status` | تحديث الحالة | staff |
-| POST | `/api/auth/login` | تسجيل الدخول | عام |
-| POST | `/api/auth/register` | إنشاء حساب | admin |
-| GET | `/api/auth/users` | قائمة الموظفين | admin |
-| POST | `/api/print/invoice` | تسجيل الدفع | staff |
-| GET | `/api/reports` | تقارير المبيعات | admin |
-| GET | `/api/payments` | سجل الفواتير | admin |
-| GET | `/api/qr/:table` | QR طاولة | عام |
-| GET | `/api/qr/print/all` | طباعة كل QR | عام |
+1. Fork the project
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
 ---
 
-## 🔐 الأمان
+## 📄 License
 
-- ✅ JWT للمصادقة مع انتهاء صلاحية 24 ساعة
-- ✅ bcrypt لتشفير كلمات المرور
-- ✅ حماية المسارات الحساسة بـ Middleware
-- ✅ التحقق الجغرافي لمنع الطلبات من خارج المطعم
-- ⚠️ غيّر `JWT_SECRET` في `.env` قبل النشر
-- ⚠️ احذف بيانات الدخول من `Login.jsx` قبل النشر
-
----
-
-## 📊 حالات الطلب
-
-```
-pending   → العميل أرسل، النادل لم يؤكد
-confirmed → النادل أكّد، المطبخ يحضّر
-ready     → المطبخ جهّز، النادل يستلم
-delivered → النادل سلّم، الكاشير ينتظر
-paid      → تم الدفع ✅
-rejected  → النادل رفض الطلب ❌
-```
-
----
-
-## 🤝 المساهمة
-
-1. Fork المشروع
-2. أنشئ branch جديد: `git checkout -b feature/amazing-feature`
-3. Commit التغييرات: `git commit -m 'Add amazing feature'`
-4. Push: `git push origin feature/amazing-feature`
-5. افتح Pull Request
-
----
-
-## 📄 الترخيص
-
-MIT License — يمكن استخدامه وتعديله بحرية.
+MIT License — free to use and modify.
 
 ---
 
 <div align="center">
-بُني بـ ❤️ لخدمة المطاعم العربية
+
+Built with ❤️ for Arabic restaurants
+
+**Node.js** • **React** • **Socket.IO** • **SQLite** • **Cloudflare**
+
 </div>
