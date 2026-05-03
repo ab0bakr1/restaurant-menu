@@ -128,6 +128,11 @@ VITE_SERVER_URL=http://localhost:5001
 
 # مع Cloudflare Tunnel
 # VITE_SERVER_URL=https://your-tunnel.trycloudflare.com
+
+# موقع المطعم — لتحديد ما إذا كان العميل داخل نطاق التوصيل
+VITE_RESTAURANT_LAT=موقع المطعم من قوقل ماب مثل 34.5445
+VITE_RESTAURANT_LNG=46.6753 موقع المطعم من قوقل ماب مثل
+VITE_MAX_DISTANCE=50 اقصى مدى بعد عن المطعم بالمتر
 ```
 
 ### الخطوة 6 — إنشاء قاعدة البيانات والحسابات الافتراضية
