@@ -137,9 +137,23 @@ Edit `client/.env`:
 
 ```env
 VITE_SERVER_URL=http://localhost:5001
+<<<<<<< HEAD
 VITE_RESTAURANT_LAT=0
 VITE_RESTAURANT_LNG=0
 VITE_MAX_DISTANCE=50
+=======
+
+# في وضع الإنتاج على شبكة المطعم
+# VITE_SERVER_URL=http://192.168.1.100:5001
+
+# مع Cloudflare Tunnel
+# VITE_SERVER_URL=https://your-tunnel.trycloudflare.com
+
+# موقع المطعم — لتحديد ما إذا كان العميل داخل نطاق التوصيل
+VITE_RESTAURANT_LAT=موقع المطعم من قوقل ماب مثل 34.5445
+VITE_RESTAURANT_LNG=46.6753 موقع المطعم من قوقل ماب مثل
+VITE_MAX_DISTANCE=50 اقصى مدى بعد عن المطعم بالمتر
+>>>>>>> 2bf224534c43f7fdae51b008679399bd1eecc2df
 ```
 
 > Set your restaurant's real GPS coordinates from Google Maps.
@@ -509,9 +523,14 @@ MIT License — free to use and modify.
 ---
 
 <div align="center">
+<<<<<<< HEAD
 
 Built with ❤️ for Arabic restaurants
 
 **Node.js** • **React** • **Socket.IO** • **SQLite** • **Cloudflare**
 
 </div>
+=======
+بُني بـ ❤️ لخدمة المطاعم العربية
+</div>
+>>>>>>> 2bf224534c43f7fdae51b008679399bd1eecc2df
